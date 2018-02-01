@@ -53,7 +53,10 @@ class Main():
             elif self.l.islogin() == False:
                 print("登陆中......")
                 self.l.re_get_cookie(self.email, self.password)
-                print("请重新运行代码")
+                if self.l.islogin() == True:
+                	print("请重新运行代码")
+                elif self.l.islogin() == False:
+                	print("账号或密码错误!")
             else:
                 pass
 
