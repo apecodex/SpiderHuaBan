@@ -2,6 +2,7 @@
 import requests
 import re
 import json
+from json.decoder import JSONDecodeError
 
 class LoginHuaBan:
 
@@ -18,8 +19,7 @@ class LoginHuaBan:
             "Origin": "http://huaban.com",
             "Referer": "http://huaban.com/login/?next=%2F",
             "Upgrade-Insecure-Requests": "1",
-            "User-Agent": """Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 
-            (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1"""
+            "User-Agent": """Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1"""
         }
         self.login_url = "https://huaban.com/auth/"
         self.session = requests.session()
@@ -59,5 +59,8 @@ class LoginHuaBan:
         html = self.session.get(url, cookies=cookie).content.decode('utf-8')
         re_user = re.compile(r'"user":(.*?), "avatar"')    # 获取用户的信息(id,用户名,花瓣个人主页)
         get_user = re_user.search(html)
-        json_user = json.loads(get_user.groups()[0] + '}')
-        return json_user
+        try:
+            json_user = json.loads(get_user.groups()[0] + '}')
+            return json_user
+        except JSONDecodeError:
+            print("账号或密码错误!")
