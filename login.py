@@ -1,18 +1,11 @@
 # -*- coding: utf-8 -*-
-
 import requests
 import re
 import json
 
-
 class LoginHuaBan:
 
     def __init__(self):
-        self.data = {
-            "_ref": "mobile",
-            "email": "",    # 输入账号
-            "password": ""    # 输入密码
-        }
         self.headers = {
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
             "Accept-Encoding": "gzip, deflate, br",
@@ -28,9 +21,7 @@ class LoginHuaBan:
             "User-Agent": """Mozilla/5.0 (iPhone; CPU iPhone OS 10_3 like Mac OS X) AppleWebKit/602.1.50 
             (KHTML, like Gecko) CriOS/56.0.2924.75 Mobile/14E5239e Safari/602.1"""
         }
-
         self.login_url = "https://huaban.com/auth/"
-
         self.session = requests.session()
 
     def islogin(self):
@@ -44,7 +35,12 @@ class LoginHuaBan:
         else:
             return True
 
-    def re_get_cookie(self):
+    def re_get_cookie(self, email, password):
+        self.data = {
+            "_ref": "mobile",
+            "email": email,  # 输入账号
+            "password": password  # 输入密码
+        }
         self.session.post(self.login_url, self.data, headers=self.headers)
         url = "https://huaban.com/"
         res = self.session.get(url)
