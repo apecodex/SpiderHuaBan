@@ -23,8 +23,8 @@ class Main():
         self.l = LoginHuaBan()
         self.s = Spider_Image()
 
-        self.email = "1473018671@qq.com"    # 输入账号
-        self.password = "crazyrookie"    # 输入密码
+        self.email = ""    # 输入账号
+        self.password = ""    # 输入密码
         self.url = ""    # 输入需要爬取的页面,默认爬取关注的发布者的图片,即 ""
 
     def run(self):
