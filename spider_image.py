@@ -111,7 +111,7 @@ class SpiderImage(LoginHuaBan):
             if args == "all":
                 url = "https://huaban.com/all/?jd4{}&max={}&limit=20&wfl=1".format(randoms, last_id)
             else:
-                url = "https://huaban.com/search/?q={}&jd5gz4om&page={}&per_page=20&wfl=1".format(args, snum)
+                url = "https://huaban.com/search/?q={}&jd5{}&page={}&per_page=20&wfl=1".format(args, randoms, snum)
                 snum+=1
             time.sleep(1+random.random())
 
