@@ -33,9 +33,9 @@ class Main():
     def run(self):
         try:
             information = self.l.get_user_information()
-            print("|" + "-" * int(len(information['username']) + len(str(information['user_id'])) + len("https://huaban.com/") + len(information['urlname']) + 26) + "|")
-            print("| username: {} id: {} home {}".format(information['username'], information['user_id'], "https://huaban.com/" + information['urlname']))
-            print("|" + "-" * int(len(information['username']) + len(str(information['user_id'])) + len("https://huaban.com/") + len(information['urlname']) + 26) + "|")
+            print("|" + "-" * int(len(information['username']) + len(str(information['user_id'])) + len("https://huaban.com/") + len(information['urlname']) + 24) + "|")
+            print("| username: {} id: {} home: {} |".format(information['username'], information['user_id'], "https://huaban.com/" + information['urlname']))
+            print("|" + "-" * int(len(information['username']) + len(str(information['user_id'])) + len("https://huaban.com/") + len(information['urlname']) + 24) + "|")
             if self.url == "":
                 print("爬取关注的图片.............")
                 self.s.get_home_image()
