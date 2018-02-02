@@ -87,7 +87,7 @@ class SpiderImage(LoginHuaBan):
             re_title_description = re.compile(r'"title":"(.*?)", "description":"(.*?)", ')    # 标题和描述
             get_pin_id_key = [i for i in re_pin_id.findall(get_pins[0]) if '}' not in i]    # 用户id和图片的key
             if get_pin_id_key == []:
-                print("爬完啦~共计: {}".format(total))
+                print("爬完啦~共计: {}".format(total-1))
                 break
             get_title_description = re_title_description.findall(get_pins[0])    # 图片的标题和描述
             get_username = re_username.findall(get_pins[0])
